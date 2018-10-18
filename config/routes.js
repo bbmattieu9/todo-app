@@ -45,6 +45,35 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
 
+  'POST /api/v1/user/signup': 
+    { 
+      action: 'user/create' 
+    }, 
+
+    'POST /api/v1/user/login': 
+    { 
+      action: 'user/login' 
+    }, 
+
+    'GET /api/v1/user/:id': 'UserController.findOne',
+
+    // 'GET /api/v1/user/:id': 
+    // { 
+    //   action: 'user/find' 
+    // }, 
+
+    'GET /api/v1/user/': 
+    { 
+      action: 'user/find' 
+    }, 
+
+
+
+    'POST /api/v1/todo/create': 
+    { 
+      action: 'todo/create' 
+    }, 
+    
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

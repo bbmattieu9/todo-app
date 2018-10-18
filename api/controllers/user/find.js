@@ -8,8 +8,9 @@ module.exports = {
   exits: {},
 
   fn: async function(inputs, exits) {
-    sails.log.debug('user.find', this.req.session.userId);
-    var users = await User.find({ id: this.req.session.userId });
+    sails.log.debug('user.findAll');
+    var users = await User.find();
+    sails.log.debug(`user.find found ${users.length} records.`);
 
     return exits.success(users);
   },

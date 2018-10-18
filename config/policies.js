@@ -25,5 +25,6 @@ module.exports.policies = {
   'user/*': ['is-logged-in'],
   'user/create': true, // ['is-logged-out'],
   'user/login': true,
+  'user/find':true,
   'todo/*': ['is-logged-in'],
 };

@@ -4,9 +4,13 @@ module.exports = {
   description: 'Create todo.',
 
   inputs: {
-    item: {
+    title: {
       required: true,
       type: 'string',
+    },
+    body:{
+      required: true,
+      type: 'string'
     },
     completed: {
       type: 'boolean',
@@ -17,10 +21,11 @@ module.exports = {
   exits: {},
 
   fn: async function(inputs, exits) {
-    sails.log.debug('todo.create', inputs.item, inputs.completed, this.req.session.userId, inputs);
+    sails.log.debug('todo.create initiated', inputs.title, inputs.body, inputs.completed, this.req.session.userId, inputs);
     var createdTodo = await Todo.create(
       Object.assign({
-        item: inputs.item,
+        title: inputs.title,
+        body: inputs.body,
         completed: inputs.completed,
         owner: this.req.session.userId
       })

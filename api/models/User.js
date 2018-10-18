@@ -6,12 +6,18 @@
 //  */
 
 module.exports = {
-
+  tableName: 'users',
   attributes: {
 
 //     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
 //     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
 //     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+
+    name:
+    {
+      type: 'string',
+      required: true,
+    },
     email: {
       type: 'string',
       required: true,
@@ -38,4 +44,3 @@ module.exports = {
     return _.omit(this, ['password']);
   }
 };
-

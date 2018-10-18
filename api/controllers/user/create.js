@@ -2,6 +2,11 @@ module.exports = {
   friendlyName: 'Signup',
   description: 'Sign up for a new user account.',
   inputs: {
+    name:
+    {
+      required: true,
+      type: 'string'
+    },
     email: {
       required: true,
       type: 'string',
@@ -23,14 +28,19 @@ module.exports = {
       description: 'The provided email address is already in use.',
     },
   },
+
+
   fn: async function(inputs, exits) {
-    sails.log.info('create', inputs.email);
+    sails.log.info('create Action Initiated for: ', inputs.email);
+
+    var newUserFullname = inputs.name;
     var newEmailAddress = inputs.email.toLowerCase();
 
     // Build up data for the new user record and save it to the database.
     // (Also use `fetch` to retrieve the new ID so that we can use it below.)
     var newUserRecord = await User.create(
       Object.assign({
+        name: newUserFullname,
         email: newEmailAddress,
         password: await sails.helpers.passwords.hashPassword(inputs.password),
       })
@@ -41,6 +51,8 @@ module.exports = {
 
     // Store the user's new id in their session.
     this.req.session.userId = newUserRecord.id;
+    sails.log.info('New User Created For: ', newUserRecord.email);
+
 
     // Since everything went ok, send our 200 response.
     return exits.success(newUserRecord);

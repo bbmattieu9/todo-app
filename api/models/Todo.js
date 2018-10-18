@@ -6,15 +6,19 @@
 //  */
 
 module.exports = {
-
+  tableName: 'todo',
   attributes: {
 
 //     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
 //     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
 //     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    item: {
+    title: {
       type: 'string',
       required: true,
+    },
+    body: {
+        type: 'string',
+        required: true,
     },
     completed: {
       type: 'boolean',
